@@ -41,6 +41,7 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
     public boolean hasWater, hasWine, isFinish;
     private int progress;
     private int time;
+
     public BrewingBarrelEntity(BlockPos pos, BlockState state) {
         super(TileInit.BrewingBarrel.get(), pos, state);
         this.hasWater = false;
@@ -76,11 +77,11 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
     public void load(CompoundTag tag) {
         super.load(tag);
 
-        hasWater    = tag.getBoolean("hasWater");
-        hasWine     = tag.getBoolean("hasWine");
-        isFinish    = tag.getBoolean("isFinish");
-        progress    = tag.getInt("progress");
-        time        = tag.getInt("time");
+        hasWater = tag.getBoolean("hasWater");
+        hasWine = tag.getBoolean("hasWine");
+        isFinish = tag.getBoolean("isFinish");
+        progress = tag.getInt("progress");
+        time = tag.getInt("time");
         itemList.fromTag((ListTag) tag.get("contents"));
     }
 
@@ -91,7 +92,7 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
         tag.putBoolean("isFinish", isFinish);
         tag.putInt("progress", progress);
         tag.putInt("time", time);
-        tag.put("contents",itemList.createTag());
+        tag.put("contents", itemList.createTag());
 
         super.saveAdditional(tag);
     }
@@ -104,20 +105,20 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
         tag.putBoolean("isFinish", isFinish);
         tag.putInt("progress", progress);
         tag.putInt("time", time);
-        tag.put("contents",itemList.createTag());
+        tag.put("contents", itemList.createTag());
 
         return tag;
     }
 
-    public ListTag createItemListTag(){
+    public ListTag createItemListTag() {
         return itemList.createTag();
     }
 
-    public boolean isItemListEmpty(){
+    public boolean isItemListEmpty() {
         return itemList.isEmpty();
     }
 
-    public void loadItemListFromTag(ListTag tag){
+    public void loadItemListFromTag(ListTag tag) {
         itemList.fromTag(tag);
     }
 
@@ -130,7 +131,7 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return handler.cast();
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return handler.cast();
         return super.getCapability(cap, side);
     }
 
@@ -170,9 +171,9 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
 
     public static void tick(Level world, BlockPos pos, BlockState state, BrewingBarrelEntity entity) {
         if (entity.hasWater && entity.hasWine && !entity.isFinish) {
-            entity.time ++;
+            entity.time++;
             if (entity.time >= 20 * 30) {
-                entity.progress ++;
+                entity.progress++;
                 entity.time = 0;
             }
 
@@ -193,7 +194,7 @@ public class BrewingBarrelEntity extends BlockEntity implements MenuProvider, Wo
 
     @Override
     public int[] getSlotsForFace(Direction p_19238_) {
-        return new int[] {0, 1};
+        return new int[]{0, 1};
     }
 
     @Override

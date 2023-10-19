@@ -14,6 +14,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 public class ContainerShaker extends AbstractContainerMenu {
     ItemStack item;
+
     public ContainerShaker(int pContainerId, Inventory inv, FriendlyByteBuf data) {
         this(pContainerId, inv);
     }
@@ -28,8 +29,9 @@ public class ContainerShaker extends AbstractContainerMenu {
 
         // F**k you, Capability.
         item.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(it -> {
-            for (int i = 0; i < 3; i ++) for (int o = 0; o < 4; o ++)
-                addSlot(new SlotInput(it, o + i * 4, 33 + o * 18, 12 + i * 18));
+            for (int i = 0; i < 3; i++)
+                for (int o = 0; o < 4; o++)
+                    addSlot(new SlotInput(it, o + i * 4, 33 + o * 18, 12 + i * 18));
             addSlot(new SlotWine(it, 12, 133, 30));
         });
     }
@@ -74,8 +76,9 @@ public class ContainerShaker extends AbstractContainerMenu {
     }
 
     private void addPlayerInventory(Inventory inventory) {
-        for (int i = 0; i < 3; ++i) for (int l = 0; l < 9; ++l)
-            this.addSlot(new Slot(inventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+        for (int i = 0; i < 3; ++i)
+            for (int l = 0; l < 9; ++l)
+                this.addSlot(new Slot(inventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
     }
 
     private void addPlayerHotbar(Inventory inventory) {

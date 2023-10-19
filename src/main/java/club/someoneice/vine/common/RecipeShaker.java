@@ -34,12 +34,12 @@ public class RecipeShaker implements Recipe<SimpleContainer> {
     @Override
     public boolean matches(SimpleContainer container, Level world) {
         List<ItemStack> itemList = Lists.newArrayList();
-        for (int o = 0; o < 12; o ++)
+        for (int o = 0; o < 12; o++)
             itemList.add(container.getItem(o).copy());
 
-        for (int i = 0; i < recipeItems.size(); i ++) {
+        for (int i = 0; i < recipeItems.size(); i++) {
             boolean pass = false;
-            for (int o = 0; o < 12; o ++) {
+            for (int o = 0; o < 12; o++) {
                 var item = itemList.get(o);
                 if (this.recipeItems.get(i).test(item)) {
                     itemList.get(o).shrink(1);
@@ -56,12 +56,12 @@ public class RecipeShaker implements Recipe<SimpleContainer> {
     @Override
     public ItemStack assemble(SimpleContainer container) {
         List<ItemStack> itemList = Lists.newArrayList();
-        for (int o = 0; o < 12; o ++)
+        for (int o = 0; o < 12; o++)
             itemList.add(container.getItem(o));
 
-        for (int i = 0; i < recipeItems.size(); i ++) {
+        for (int i = 0; i < recipeItems.size(); i++) {
             boolean pass = false;
-            for (int o = 0; o < 12; o ++) {
+            for (int o = 0; o < 12; o++) {
                 var item = itemList.get(o);
                 if (this.recipeItems.get(i).test(item)) {
                     itemList.get(o).shrink(1);
@@ -110,7 +110,9 @@ public class RecipeShaker implements Recipe<SimpleContainer> {
     }
 
     public static class Type implements RecipeType<RecipeShaker> {
-        private Type() {}
+        private Type() {
+        }
+
         public static final Type INSTANCE = new Type();
     }
 

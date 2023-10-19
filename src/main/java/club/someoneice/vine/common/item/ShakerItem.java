@@ -1,9 +1,9 @@
 package club.someoneice.vine.common.item;
 
+import club.someoneice.vine.TskimiSeiranVine;
 import club.someoneice.vine.common.RecipeShaker;
 import club.someoneice.vine.common.container.ContainerShaker;
 import club.someoneice.vine.core.Data;
-import club.someoneice.vine.TskimiSeiranVine;
 import club.someoneice.vine.init.BlockInit;
 import club.someoneice.vine.init.ItemInit;
 import club.someoneice.vine.init.PotionInit;
@@ -72,7 +72,8 @@ public class ShakerItem extends Item {
                     if (player == null) return;
                     Utilities.addItem2PlayerOrDrop(player, it.getStackInSlot(12).copy());
                     it.getStackInSlot(12).setCount(0);
-                } else context.getLevel().setBlock(context.getClickedPos(), BlockInit.NoneCocktail.get().defaultBlockState(), 3);
+                } else
+                    context.getLevel().setBlock(context.getClickedPos(), BlockInit.NoneCocktail.get().defaultBlockState(), 3);
                 removeItem(context.getItemInHand());
             });
         }
@@ -87,7 +88,7 @@ public class ShakerItem extends Item {
 
         SimpleContainer container = new SimpleContainer(8);
         item.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(it -> {
-            for (int i = 0; i < 12; i ++) {
+            for (int i = 0; i < 12; i++) {
                 var itm = it.getStackInSlot(i).copy();
                 if (itm.getItem() instanceof Wine.WineItem wine)
                     container.addItem(Data.wineMap.get(wine.name).bottle.get().getDefaultInstance());
@@ -111,7 +112,7 @@ public class ShakerItem extends Item {
 
     private void removeItem(ItemStack item) {
         item.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(it -> {
-            for (int i = 0; i < 12; i ++) {
+            for (int i = 0; i < 12; i++) {
                 var itm = it.getStackInSlot(i);
                 if (itm.getItem() instanceof Wine.WineItem wine) {
                     if (wine.wineEnum.equals(Wine.WineEnum.BUCKET) || wine.wineEnum.equals(Wine.WineEnum.WINE)) {

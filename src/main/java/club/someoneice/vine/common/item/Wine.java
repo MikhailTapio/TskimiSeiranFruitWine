@@ -1,7 +1,7 @@
 package club.someoneice.vine.common.item;
 
-import club.someoneice.vine.core.Data;
 import club.someoneice.vine.TskimiSeiranVine;
+import club.someoneice.vine.core.Data;
 import club.someoneice.vine.init.ItemInit;
 import club.someoneice.vine.util.Utilities;
 import net.minecraft.network.chat.Component;
@@ -27,13 +27,13 @@ public class Wine {
     public String name;
 
     public Wine(String name, int hunger) {
-        this.name   = "tsfWine." + name;
+        this.name = "tsfWine." + name;
 
-        bucket      = ItemInit.ITEMS.register(name + "_bucket",      () -> new WineItem(WineEnum.BUCKET, name, WineItem.propertiesHelper(hunger), Items.BUCKET));
-        wineBottle  = ItemInit.ITEMS.register(name + "_wine",        () -> new WineItem(WineEnum.WINE, name, WineItem.propertiesHelper(hunger), ItemInit.WineBottle.get()));
-        bottle      = ItemInit.ITEMS.register(name + "_bottle",      () -> new WineItem(WineEnum.BOTTLE, name, WineItem.propertiesHelper(hunger), Items.GLASS_BOTTLE));
-        glass       = ItemInit.ITEMS.register(name + "_glass",        () -> new WineItem(WineEnum.GLASS, name, WineItem.propertiesHelper(hunger), ItemInit.GlassBottle.get()));
-        cup         = ItemInit.ITEMS.register(name + "_cup",         () -> new WineItem(WineEnum.CUP, name, WineItem.propertiesHelper(hunger), ItemInit.Cup.get()));
+        bucket = ItemInit.ITEMS.register(name + "_bucket", () -> new WineItem(WineEnum.BUCKET, name, WineItem.propertiesHelper(hunger), Items.BUCKET));
+        wineBottle = ItemInit.ITEMS.register(name + "_wine", () -> new WineItem(WineEnum.WINE, name, WineItem.propertiesHelper(hunger), ItemInit.WineBottle.get()));
+        bottle = ItemInit.ITEMS.register(name + "_bottle", () -> new WineItem(WineEnum.BOTTLE, name, WineItem.propertiesHelper(hunger), Items.GLASS_BOTTLE));
+        glass = ItemInit.ITEMS.register(name + "_glass", () -> new WineItem(WineEnum.GLASS, name, WineItem.propertiesHelper(hunger), ItemInit.GlassBottle.get()));
+        cup = ItemInit.ITEMS.register(name + "_cup", () -> new WineItem(WineEnum.CUP, name, WineItem.propertiesHelper(hunger), ItemInit.Cup.get()));
 
         Data.wineMap.put("tsfWine." + name, this);
     }
